@@ -52,14 +52,17 @@ const {username,fullname,password}=req.body;
   const x = await pool.query("INSERT INTO users ( `username`, `password`, `fullname`) VALUES (?,?,?)", [username,fullname,password ], (err, rows, field) => {
     if (!err) {
       res.json();
+      res.sendFile(path.join(__dirname, '../public/index.html'));
 
     } else {
       console.log(err);
     }
   })
 console.log(x)
+alert(x)
 // req.sendFile(__dirname + '/src/public/index.html')
-res.sendFile(path.join(__dirname, '../public/index.html'));
+
+
 })
 
 
